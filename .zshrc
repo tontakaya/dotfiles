@@ -116,7 +116,7 @@ fpath=(~/.zsh/functions/Completion ${fpath})
     ;;
     esac
 
-    alias la="ls -a"
+    alias la="ls -al"
     alias lf="ls -F"
     alias ll="ls -l"
 
@@ -191,3 +191,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
 ## load user .zshrc configuration file
 #
            [ -f ~/.zshrc.mine ] && source ~/.zshrc.mineetopt auto_cd
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

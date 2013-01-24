@@ -31,17 +31,14 @@ set hidden
 "インクリメンタルサーチを行う
 set incsearch
 
-"タブ文字、行末など不可視文字を表示する
-set list
+"タブ文字、行末など不可視文字を表示しない
+set nolist
 
 "listで表示される文字のフォーマットを指定する
 set listchars=eol:$,tab:>\ ,extends:<
 
 "行番号を表示する
 set number
-
-"シフト移動幅
-set shiftwidth=4
 
 "閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
@@ -55,9 +52,6 @@ set smartindent
 "行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
 set smarttab
 
-"ファイル内の <Tab> が対応する空白の数
-set tabstop=4
-
 "カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 
@@ -70,10 +64,26 @@ set hlsearch
 " esc２回でハイライトを消す
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
+"ファイル内の <Tab> が対応する空白の数
+set tabstop=4
+
+"シフト移動幅
+set shiftwidth=4
+
+"ファイルタイプによってインデント幅を変更する
+"au BufNewFile,BufRead *.py set nowrap tabstop=4 shiftwidth=4
+au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2
+
+""""""""""""""""""""""""""""""""
+""""""""key mapping"""""""""""""
+""""""""""""""""""""""""""""""""
+noremap  
+noremap!  
+noremap <BS> 
+noremap! <BS> 
 """"""""""""""""""""""""""""""""
 """"""""""PHPの設定"""""""""""""
 """"""""""""""""""""""""""""""""
-
 let php_sql_query = 1
 let php_baselib = 1
 let php_htmlInStrings = 1
@@ -175,7 +185,7 @@ inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
 
 " <C-h>や<BS>を押したときに確実にポップアップを削除します
-inoremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>”
+noremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>”
 
 " 現在選択している候補を確定します
 inoremap <expr><C-y> neocomplcache#close_popup()
