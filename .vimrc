@@ -120,6 +120,7 @@ NeoBundle 'Shougo/vimproc'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'grep.vim'
+NeoBundle 'tpope/vim-fugitive'
 
 "color scheme
 NeoBundle 'molokai'
