@@ -149,4 +149,9 @@ update_prompt()
 add-zsh-hook precmd update_prompt
 
 
+eval "%(rbenv init - zsh)"
 PATH=$HOME/local/bin:$PATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting

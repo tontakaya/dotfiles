@@ -70,6 +70,8 @@ set tabstop=4
 "シフト移動幅
 set shiftwidth=4
 
+"twigをシンタックスハイライト"
+autocmd BufReadPost *.twig set filetype=jinjahtml
 "ファイルタイプによってインデント幅を変更する
 "au BufNewFile,BufRead *.py set nowrap tabstop=4 shiftwidth=4
 au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2
