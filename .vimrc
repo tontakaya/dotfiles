@@ -1,3 +1,10 @@
+set encoding=utf-8
+set fileencodings=utf-8,euc-jp,sjis,cp932
+
+"Disable beep and flash
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 "常にステータスラインを表示する
 set laststatus=2
 
@@ -114,7 +121,6 @@ if has('vim_starting')
 call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
-NeoBundle 'The-NERD-tree'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'Shougo/neocomplcache.git'
@@ -123,6 +129,8 @@ NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'grep.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ichouchou2/vim-javascript'
+NeoBundle 'jelera/vim-javascript-syntax'
 
 "color scheme
 NeoBundle 'molokai'
