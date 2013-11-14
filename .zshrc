@@ -155,3 +155,6 @@ PATH=$HOME/local/bin:$PATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
+
+source ~/.nvm/nvm.sh
+nvm use default

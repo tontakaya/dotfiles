@@ -1,3 +1,4 @@
+"Encoding
 set encoding=utf-8
 set fileencodings=utf-8,euc-jp,sjis,cp932
 
@@ -5,14 +6,54 @@ set fileencodings=utf-8,euc-jp,sjis,cp932
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-"常にステータスラインを表示する
-set laststatus=2
+"----------------------------
+"indent setting
+"----------------------------
+"ファイル内の <Tab> が対応する空白の数
+set tabstop=4
+
+"シフト移動幅
+set shiftwidth=4
+
+augroup vimrc
+autocmd! FileType perl setlocal shiftwidth=2 tabstop=2
+autocmd! FileType html setlocal shiftwidth=2 tabstop=2
+autocmd! FileType css  setlocal shiftwidth=2 tabstop=2
+autocmd! FileType ruby setlocal shiftwidth=2 tabstop=2
+augroup END
+
+"新しい行のインデントを現在行と同じにする
+set autoindent
+
+"タブの代わりに空白文字を挿入する
+set expandtab
+
+"新しい行を作ったときに高度な自動インデントを行う
+set smartindent
+
+"行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
+set smarttab
+
+"検索時に大文字を含んでいたら大/小を区別
+set smartcase
+
+"----------------------------
+"Search setting
+"----------------------------
+"検索をファイルの先頭へループしない
+set wrapscan
+
+" 検索結果をハイライト
+set hlsearch
 
 "検索時に大文字と小文字を区別しない
 set ignorecase
 
-"新しい行のインデントを現在行と同じにする
-set autoindent
+" esc２回でハイライトを消す
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"常にステータスラインを表示する
+set laststatus=2
 
 "バックアップファイルを作るディレクトリ
 set backupdir=$HOME/vimbackup
@@ -28,9 +69,6 @@ set nocompatible
 
 "スワップファイル用のディレクトリ
 set directory=$HOME/vimbackup
-
-"タブの代わりに空白文字を挿入する
-set expandtab
 
 "変更中のファイルでも、保存しないで他のファイルを表示
 set hidden
@@ -50,38 +88,11 @@ set number
 "閉じ括弧が入力されたとき、対応する括弧を表示する
 set showmatch
 
-"検索時に大文字を含んでいたら大/小を区別
-set smartcase
-
-"新しい行を作ったときに高度な自動インデントを行う
-set smartindent
-
-"行頭の余白内で Tab を打ち込むと、'shiftwidth' の数だけインデントする。
-set smarttab
-
 "カーソルを行頭、行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 
-"検索をファイルの先頭へループしない
-set nowrapscan
-
-" 検索結果をハイライト
-set hlsearch
-
-" esc２回でハイライトを消す
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
-
-"ファイル内の <Tab> が対応する空白の数
-set tabstop=4
-
-"シフト移動幅
-set shiftwidth=4
-
 "twigをシンタックスハイライト"
 autocmd BufReadPost *.twig set filetype=jinjahtml
-"ファイルタイプによってインデント幅を変更する
-"au BufNewFile,BufRead *.py set nowrap tabstop=4 shiftwidth=4
-au BufNewFile,BufRead *.rb set nowrap tabstop=2 shiftwidth=2
 
 """"""""""""""""""""""""""""""""
 """"""""key mapping"""""""""""""
@@ -131,6 +142,7 @@ NeoBundle 'grep.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ichouchou2/vim-javascript'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'scrooloose/syntastic'
 
 "color scheme
 NeoBundle 'molokai'
@@ -149,6 +161,12 @@ vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
 imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+
+"----------------------------
+"jsLint.vim
+"----------------------------
+let $JS_CMD='node'
+"
 " ---------------------------
 "  neocomplcache
 "  --------------------------
