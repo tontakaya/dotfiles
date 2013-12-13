@@ -149,12 +149,15 @@ update_prompt()
 add-zsh-hook precmd update_prompt
 
 
-eval "%(rbenv init - zsh)"
 PATH=$HOME/local/bin:$PATH
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 PATH=$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting
 
-source ~/.nvm/nvm.sh
-nvm use default
+# nvm と指定されたバージョンの Node.js がインストール済みの場合だけ
+# 設定を有効にする
+if [[ -f ~/.nvm/nvm.sh ]]; then
+  source ~/.nvm/nvm.sh
+  nvm use "${_nodejs_use_version}" >/dev/null
+fi
