@@ -1,10 +1,29 @@
 "Encoding
 set encoding=utf-8
-set fileencodings=utf-8,euc-jp,sjis,cp932
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,euc-jp,cp932,iso-2022-jp
+set fileencodings+=,ucs-2le,ucs-2,utf-8
 
 "Disable beep and flash
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
+
+" 80列以降を強調表示
+set textwidth=0
+if exists('&colorcolumn')
+  set colorcolumn=+1
+  " sh,cpp,perl,vim,...の部分は自分が使う
+  " プログラミング言語のfiletypeに合わせてください
+  autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme,php,rspec,javascript setlocal textwidth=80
+  hi ColorColumn ctermbg=blue
+endif
+
+augroup HighlightTrailingSpaces
+  autocmd!
+  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+  autocmd VimEnter,WinEnter * match TrailingSpaces /\(\s\+$\|　\)/
+augroup END
 
 "----------------------------
 "indent setting
