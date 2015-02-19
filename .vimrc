@@ -2,28 +2,12 @@
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=ucs-bom,euc-jp,cp932,iso-2022-jp
-set fileencodings+=,ucs-2le,ucs-2,utf-8
+set fileencodings=utf-8,euc-jp,ucs-bom,cp932,iso-2022-jp
+set fileencodings+=,ucs-2le,ucs-2
 
 "Disable beep and flash
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" 80列以降を強調表示
-set textwidth=0
-if exists('&colorcolumn')
-  set colorcolumn=+1
-  " sh,cpp,perl,vim,...の部分は自分が使う
-  " プログラミング言語のfiletypeに合わせてください
-  autocmd FileType sh,cpp,perl,vim,ruby,python,haskell,scheme,php,rspec,javascript setlocal textwidth=80
-  hi ColorColumn ctermbg=blue
-endif
-
-augroup HighlightTrailingSpaces
-  autocmd!
-  autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
-  autocmd VimEnter,WinEnter * match TrailingSpaces /\(\s\+$\|　\)/
-augroup END
 
 "----------------------------
 "indent setting
@@ -33,13 +17,6 @@ set tabstop=4
 
 "シフト移動幅
 set shiftwidth=4
-
-augroup vimrc
-autocmd! FileType perl setlocal shiftwidth=2 tabstop=2
-autocmd! FileType html setlocal shiftwidth=2 tabstop=2
-autocmd! FileType css  setlocal shiftwidth=2 tabstop=2
-autocmd! FileType ruby setlocal shiftwidth=2 tabstop=2
-augroup END
 
 "新しい行のインデントを現在行と同じにする
 set autoindent
@@ -152,25 +129,6 @@ if has('vim_starting')
     call neobundle#end()
 endif
 
-NeoBundle 'git://github.com/Shougo/vimshell.git'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'grep.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ichouchou2/vim-javascript'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'scrooloose/syntastic'
-
-"color scheme
-NeoBundle 'molokai'
-NeoBundle 'altercation/vim-colors-solarized'
-
-filetype plugin on
-filetype indent on
-
 "--------------------------
 " NERDTree
 "--------------------------
@@ -181,66 +139,3 @@ vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
 imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-
-"----------------------------
-"jsLint.vim
-"----------------------------
-let $JS_CMD='node'
-"
-" ---------------------------
-"  neocomplcache
-"  --------------------------
-"
-" 起動時に有効化
-let g:neocomplcache_enable_at_startup = 1
-
-" 大文字が入力されるまで大文字小文字の区別を無視する
-let g:neocomplcache_enable_smart_case = 1
-
-" _(アンダースコア)区切りの補完を有効化
-let g:neocomplcache_enable_underbar_completion = 1
-
-let g:neocomplcache_enable_camel_case_completion  =  1
-
-" ポップアップメニューで表示される候補の数
-let g:neocomplcache_max_list = 20
-
-" シンタックスをキャッシュするときの最小文字長
-let g:neocomplcache_min_syntax_length = 3
-
-" ディクショナリ定義
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'php' : $HOME . '/.vim/dict/php.dict',
-"    \ 'ctp' : $HOME . '/.vim/dict/php.dict'
-"    \ }
-
-if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" 前回行われた補完をキャンセルします
-inoremap <expr><C-g> neocomplcache#undo_completion()
-
-" 補完候補のなかから、共通する部分を補完します
-inoremap <expr><C-l> neocomplcache#complete_common_string()
-
-" 改行で補完ウィンドウを閉じる
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-"補完候補が表示されている場合は確定。そうでない場合は改行
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
-
-"tabで補完候補の選択を行う
-inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<Up>" : "\<S-TAB>"
-
-" <C-h>や<BS>を押したときに確実にポップアップを削除します
-noremap <expr><C-h> neocomplcache#smart_close_popup().”\<C-h>”
-
-" 現在選択している候補を確定します
-inoremap <expr><C-y> neocomplcache#close_popup()
-
-" 現在選択している候補をキャンセルし、ポップアップを閉じます
-"inoremap <expr><C-e> neocomplcache#cancel_popup()
-
