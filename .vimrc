@@ -2,8 +2,8 @@
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=ucs-bom,euc-jp,cp932,iso-2022-jp
-set fileencodings+=,ucs-2le,ucs-2,utf-8
+set fileencodings=utf-8,ucs-bom,euc-jp,cp932,iso-2022-jp
+set fileencodings+=,ucs-2le,ucs-2
 
 "Disable beep and flash
 set noerrorbells visualbell t_vb=
