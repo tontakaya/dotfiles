@@ -149,24 +149,26 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#begin(expand('~/.vim/bundle/'))
     NeoBundleFetch 'Shougo/neobundle.vim'
+
+    NeoBundle 'git://github.com/Shougo/vimshell.git'
+    NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+    NeoBundle 'Shougo/neocomplcache.git'
+    NeoBundle 'Shougo/vimproc'
+    NeoBundle 'Shougo/neosnippet.git'
+    NeoBundle 'Shougo/unite.vim'
+    NeoBundle 'grep.vim'
+    NeoBundle 'tpope/vim-fugitive'
+    NeoBundle 'ichouchou2/vim-javascript'
+    NeoBundle 'jelera/vim-javascript-syntax'
+    NeoBundle 'scrooloose/syntastic'
+    NeoBundle 'scrooloose/nerdtree.git'
+
+    "color scheme
+    NeoBundle 'molokai'
+    NeoBundle 'altercation/vim-colors-solarized'
     call neobundle#end()
 endif
 
-NeoBundle 'git://github.com/Shougo/vimshell.git'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'grep.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ichouchou2/vim-javascript'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'scrooloose/syntastic'
-
-"color scheme
-NeoBundle 'molokai'
-NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin on
 filetype indent on
@@ -175,7 +177,6 @@ filetype indent on
 " NERDTree
 "--------------------------
 nmap <C-e> :NERDTreeToggle . "<CR>"
-NeoBundle 'scrooloose/nerdtree.git'
 nmap <silent> <C-e>      :NERDTreeToggle<CR>
 vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
 omap <silent> <C-e>      :NERDTreeToggle<CR>
