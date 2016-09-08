@@ -150,10 +150,10 @@ if has('vim_starting')
     call neobundle#begin(expand('~/.vim/bundle/'))
     NeoBundleFetch 'Shougo/neobundle.vim'
 
-    NeoBundle 'git://github.com/Shougo/vimshell.git'
-    NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+    NeoBundle 'Shougo/vimshell.git'
+    NeoBundle 'Lokaltog/vim-powerline.git'
     NeoBundle 'Shougo/neocomplcache.git'
-    NeoBundle 'Shougo/vimproc'
+    "NeoBundle 'Shougo/vimproc'
     NeoBundle 'Shougo/neosnippet.git'
     NeoBundle 'Shougo/unite.vim'
     NeoBundle 'grep.vim'
@@ -165,7 +165,7 @@ if has('vim_starting')
 
     "color scheme
     NeoBundle 'molokai'
-    NeoBundle 'altercation/vim-colors-solarized'
+    "NeoBundle 'altercation/vim-colors-solarized'
     call neobundle#end()
 endif
 
